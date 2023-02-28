@@ -33,39 +33,47 @@ def main():
 
     # Time measurement for the quicksort algorithm
     quick_time = []
+    print("Quicksort: ", end="")
     for i in range(len(quick_arr)):
         start = time()
         quick_arr[i] = quicksort(quick_arr[i])
         end = time()
         quick_time.append((end - start) * 1e3)
-    print("Quicksort done")
+        print("#", end="")
+    print("")
 
     # Time measurement for the mergesort algorithm
     merge_time = []
+    print("Mergesort: ", end="")
     for i in range(len(merge_arr)):
         start = time()
         merge_arr[i] = mergesort(merge_arr[i])
         end = time()
         merge_time.append((end - start) * 1e3)
-    print("Mergesort done")
+        print("#", end="")
+    print("")
 
     # Time measurement for the heapsort algorithm
     heap_time = []
+    print("Heapsort: ", end="")
     for i in range(len(heap_arr)):
         start = time()
         heap_arr[i] = heapsort(heap_arr[i])
         end = time()
         heap_time.append((end - start) * 1e3)
-    print("Heapsort done")
+        print("#", end="")
+    print()
 
     # Time measurement for the shellsort algorithm
     shell_time = []
+    print("Shellsort: ", end="")
     for i in range(len(shell_arr)):
         start = time()
         shell_arr[i] = shellsort(shell_arr[i])
         end = time()
         shell_time.append((end - start) * 1e3)
-    print("Shellsort done")
+        print("#", end="")
+    print()
 
     # Store the no of elements for graph plotting
     elems = []
@@ -109,8 +117,6 @@ def main():
     plt.ylabel("Time (ms)")
     plt.xlabel("Rate of change")
     plt.show()
-
-    print(quick_arr == merge_arr == heap_arr == shell_arr)
 
 
 if __name__ == '__main__':
