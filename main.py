@@ -5,7 +5,7 @@ from random import random
 from algorithms.quicksort import quicksort
 from algorithms.mergesort import mergesort
 from algorithms.heapsort import heapsort
-from algorithms.bubblesort import bubblesort
+from algorithms.shellsort import shellsort
 
 # Used for time measurement and graph plotting
 import matplotlib.pyplot as plt
@@ -29,7 +29,7 @@ def main():
     quick_arr = arr.copy()
     merge_arr = arr.copy()
     heap_arr = arr.copy()
-    bubble_arr = arr.copy()
+    shell_arr = arr.copy()
 
     # Time measurement for the quicksort algorithm
     quick_time = []
@@ -58,14 +58,14 @@ def main():
         heap_time.append((end - start) * 1e3)
     print("Heapsort done")
 
-    # Time measurement for the bubblesort algorithm
-    bubble_time = []
-    for i in range(len(bubble_arr)):
+    # Time measurement for the shellsort algorithm
+    shell_time = []
+    for i in range(len(shell_arr)):
         start = time()
-        bubble_arr[i] = bubblesort(bubble_arr[i])
+        shell_arr[i] = shellsort(shell_arr[i])
         end = time()
-        bubble_time.append((end - start) * 1e3)
-    print("Bubblesort done")
+        shell_time.append((end - start) * 1e3)
+    print("Shellsort done")
 
     # Store the no of elements for graph plotting
     elems = []
@@ -94,8 +94,8 @@ def main():
     plt.xlabel("Number of elements")
     plt.show()
 
-    plt.plot(elems, bubble_time, "-black")
-    plt.title("Bubblesort algorithm")
+    plt.plot(elems, shell_time, "-k")
+    plt.title("Shellsort algorithm")
     plt.ylabel("Time (ms)")
     plt.xlabel("Number of elements")
     plt.show()
@@ -103,12 +103,14 @@ def main():
     plt.plot(rate, quick_time, "-r")
     plt.plot(rate, merge_time, "-g")
     plt.plot(rate, heap_time, "-b")
-    plt.plot(rate, bubble_time, "-black")
+    plt.plot(rate, shell_time, "-k")
     plt.title("Rates of change over array length increase")
-    plt.legend(["Quicksort", "Mergesort", "Heapsort", "Bubblesort"])
+    plt.legend(["Quicksort", "Mergesort", "Heapsort", "Shellsort"])
     plt.ylabel("Time (ms)")
     plt.xlabel("Rate of change")
     plt.show()
+
+    print(quick_arr == merge_arr == heap_arr == shell_arr)
 
 
 if __name__ == '__main__':
